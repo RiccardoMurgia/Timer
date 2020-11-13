@@ -25,18 +25,24 @@ void MainWindow::on_pushButton_clicked() {
 
 void MainWindow::update() {
     QWidget::update();
-    ui->timeLabel->setText(QString::fromStdString(counter->getStringTime()));
     ui->dateLabel->setText(QString::fromStdString(counter->getStringDate()));
-    changeFormat();
+    ui->timeLabel->setText(QString::fromStdString(counter->getStringTime()));
+
+    changeDateFormat();         // fixme il formato non cambia!!!
+    changeTimeFormat();
+
 }
 
-void MainWindow::changeFormat() {
+void MainWindow::changeTimeFormat() {
     string timeFormat = ui->selectTimeFormat->currentText().toStdString();
-    string dataFormat = ui->selectDateFormat->currentText().toStdString();
     if (counter->getTimeFormat() != timeFormat) {
         counter->setTimeFormat(timeFormat);
     }
-    if (counter->getDateFormat() != dataFormat) {
-        counter->setDateFormat(dataFormat);
+}
+
+void MainWindow::changeDateFormat() {
+    string dateFormat = ui->selectDateFormat->currentText().toStdString();
+    if(counter->getDateFormat() != dateFormat){
+        counter->setDateFormat(dateFormat);
     }
 }

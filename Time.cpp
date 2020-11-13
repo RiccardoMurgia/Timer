@@ -39,8 +39,17 @@ string &Time::getFormat() {
     return format;
 }
 
- string Time::getFullString() const {
+string Time::getFullString() const {
     string fullString;
+    std::string sec = std::to_string(seconds);
+    std::string min = std::to_string(minutes);
+    std::string h = std::to_string(hours);
+    if (seconds < 10)
+        sec = '0' + std::to_string(seconds);
+    if (minutes < 10)
+        min = '0' + std::to_string(minutes);
+    if (hours < 10)
+        h = '0' + std::to_string(hours);
     if (format == "12h Form") {
         string amOrPm;
         int tmpHours;
@@ -49,11 +58,12 @@ string &Time::getFormat() {
         else
             amOrPm = "AM";
         tmpHours = (hours > 12 ? hours - 12 : hours);
-        fullString =
-                std::to_string(tmpHours) + " : " + std::to_string(minutes) + " : " + std::to_string(seconds) + " " +
-                amOrPm;
+        if (tmpHours < 10)
+            h = "0" + std::to_string(tmpHours);
+        fullString = h + " : " + min+ " : " + sec+ " " +
+                     amOrPm;
     } else {
-        fullString = std::to_string(hours) + " : " + std::to_string(minutes) + " : " + std::to_string(seconds);
+        fullString = h+ " : " + min + " : " + sec;
     }
     return fullString;
 }

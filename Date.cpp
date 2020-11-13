@@ -5,7 +5,7 @@
 #include "Date.h"
 
 Date::Date(int day, int month, int year, int dayOfWeek, bool leapYear) : day(day), month(month), year(year),
-                                                                         dayOfWeek(dayOfWeek), leapYear(leapYear) ,format("Extended Format"){}
+                                                                         dayOfWeek(dayOfWeek), leapYear(leapYear) ,format("DD-MM-YYYY"){}
 
 void Date::setDay(int day) {
     Date::day = day;
@@ -62,10 +62,10 @@ string Date::getFullString() const {
     y = std::to_string(year);
 
     if (format == "DD-MM-YYYY") {
-        fullString = d + " " + m + " " + y;
+        fullString = d + " - " + m + "- " + y;
         return fullString;
     } else if (format == "DD-MM-YY") {
-        fullString = d + " " + m + " " + y.substr(2, 3);
+        fullString = d + " - " + m + "- " + y.substr(2, 3);
         return fullString;
     } else {
         string tmp;

@@ -81,7 +81,8 @@ void Counter::increase() {
                 currentTime->setHours(currentTime->getHours() + 1);
             else {
                 currentTime->setHours(0);
-                if (check()) {
+
+                if (check()) {                                                  //chack controlla se è neccessario incrementare anche il mese
                     currentDate->setDay(currentDate->getDay() + 1);
                 } else {
                     currentDate->setDay(1);

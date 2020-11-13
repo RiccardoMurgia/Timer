@@ -26,7 +26,9 @@ private slots:
 
     void on_pushButton_clicked();
 
-    void changeFormat();
+    void changeTimeFormat();
+
+    void changeDateFormat();
 
 private:
     Ui::MainWindow *ui;
