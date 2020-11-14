@@ -13,22 +13,26 @@ Q_OBJECT
 
 public:
 
-    explicit MyTimer( QWidget *parent = nullptr);
+    explicit MyTimer(QWidget *parent = nullptr);
 
     ~MyTimer();
 
     void update() override;
 
-
-private:
-    Ui::MyTimer *ui;
-    Counter* counter;
+public slots:
 
     void on_startButton_clicked();
 
     void on_stopButton_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_restButton_clicked();
+
+private:
+    Ui::MyTimer *ui;
+    Counter *counter;
+    Time *time;
+
+
 };
 
 #endif // MYTIMER_H

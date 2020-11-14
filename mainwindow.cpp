@@ -18,31 +18,26 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked() {
+
+void MainWindow::on_openTimer_clicked()
+{
     myTimer = new MyTimer();
     myTimer->show();
+
 }
 
 void MainWindow::update() {
     QWidget::update();
     ui->dateLabel->setText(QString::fromStdString(counter->getStringDate()));
     ui->timeLabel->setText(QString::fromStdString(counter->getStringTime()));
-
-    changeDateFormat();         // fixme il formato non cambia!!!
-    changeTimeFormat();
-
 }
 
-void MainWindow::changeTimeFormat() {
+void MainWindow::on_selectTimeFormat_currentTextChanged(const QString &arg1) {
     string timeFormat = ui->selectTimeFormat->currentText().toStdString();
-    if (counter->getTimeFormat() != timeFormat) {
-        counter->setTimeFormat(timeFormat);
-    }
+    counter->setTimeFormat(timeFormat);
 }
 
-void MainWindow::changeDateFormat() {
+void MainWindow::on_selectDateFormat_currentTextChanged(const QString &arg1) {
     string dateFormat = ui->selectDateFormat->currentText().toStdString();
-    if(counter->getDateFormat() != dateFormat){
-        counter->setDateFormat(dateFormat);
-    }
+    counter->setDateFormat(dateFormat);
 }

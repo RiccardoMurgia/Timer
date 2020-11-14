@@ -58,7 +58,7 @@ private:
 
     Counter();
 
-    bool check();
+    bool isNotLastDayOfTheMonth();
 
 
 };

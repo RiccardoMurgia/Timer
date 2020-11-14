@@ -52,7 +52,7 @@ void Counter::setTimeFormat(const string& format) {
 }
 
 void Counter::setDateFormat(const string& format) {
-    currentTime->setFormat(format);
+    currentDate->setFormat(format);
 }
 
 void Counter::attach(Observer *o) {
@@ -82,7 +82,7 @@ void Counter::increase() {
             else {
                 currentTime->setHours(0);
 
-                if (check()) {                                                  //chack controlla se è neccessario incrementare anche il mese
+                if (isNotLastDayOfTheMonth()) {
                     currentDate->setDay(currentDate->getDay() + 1);
                 } else {
                     currentDate->setDay(1);
@@ -101,7 +101,7 @@ void Counter::increase() {
     notify();
 }
 
-bool Counter::check() {
+bool Counter::isNotLastDayOfTheMonth() {
     if ((currentDate->getDay() + 1 <= 30 && currentDate->getMonth() != 2) ||
         currentDate->getDay() + 1 <= 28 ||
         (currentDate->getDay() + 1 == 29 && currentDate->isLeapYear() == true) ||

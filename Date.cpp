@@ -5,7 +5,7 @@
 #include "Date.h"
 
 Date::Date(int day, int month, int year, int dayOfWeek, bool leapYear) : day(day), month(month), year(year),
-                                                                         dayOfWeek(dayOfWeek), leapYear(leapYear) ,format("DD-MM-YYYY"){}
+                                                                         dayOfWeek(dayOfWeek), leapYear(leapYear) ,format("Extended Format"){}
 
 void Date::setDay(int day) {
     Date::day = day;

@@ -60,8 +60,7 @@ string Time::getFullString() const {
         tmpHours = (hours > 12 ? hours - 12 : hours);
         if (tmpHours < 10)
             h = "0" + std::to_string(tmpHours);
-        fullString = h + " : " + min+ " : " + sec+ " " +
-                     amOrPm;
+        fullString = h + " : " + min+ " : " + sec+ " " + amOrPm;
     } else {
         fullString = h+ " : " + min + " : " + sec;
     }

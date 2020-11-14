@@ -24,16 +24,18 @@ public:
 
 private slots:
 
-    void on_pushButton_clicked();
+    void on_openTimer_clicked();
 
-    void changeTimeFormat();
+    void on_selectTimeFormat_currentTextChanged(const QString &arg1);
 
-    void changeDateFormat();
+    void on_selectDateFormat_currentTextChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
     MyTimer *myTimer;
     Counter *counter;
+
+
 };
 
 #endif // MAINWINDOW_H
