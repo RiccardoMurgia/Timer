@@ -19,8 +19,7 @@ MainWindow::~MainWindow() {
 }
 
 
-void MainWindow::on_openTimer_clicked()
-{
+void MainWindow::on_openTimer_clicked() {
     myTimer = new MyTimer();
     myTimer->show();
 

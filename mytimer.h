@@ -21,16 +21,19 @@ public:
 
 public slots:
 
+    void on_setTimerButton_clicked();
+
     void on_startButton_clicked();
 
-    void on_stopButton_clicked();
+    void on_pauseButton_clicked();
 
-    void on_restButton_clicked();
+    void on_resetButton_clicked();
 
 private:
     Ui::MyTimer *ui;
     Counter *counter;
     Time *time;
+    bool start, pause, setFlag;
 
 
 };

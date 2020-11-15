@@ -62,7 +62,7 @@ string Time::getFullString() const {
             h = "0" + std::to_string(tmpHours);
         fullString = h + " : " + min+ " : " + sec+ " " + amOrPm;
     } else {
-        fullString = h+ " : " + min + " : " + sec;
+        fullString = h + " : " + min + " : " + sec;
     }
     return fullString;
 }

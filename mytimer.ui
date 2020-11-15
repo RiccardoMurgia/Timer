@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>523</width>
-    <height>225</height>
+    <height>252</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
+     <y>30</y>
      <width>475</width>
      <height>193</height>
     </rect>
@@ -51,6 +51,13 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="setTimerButton">
+        <property name="text">
+         <string>Set Timer</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -96,7 +103,11 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLCDNumber" name="hours"/>
+       <widget class="QLCDNumber" name="hours">
+        <property name="intValue" stdset="0">
+         <number>0</number>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label">
@@ -192,7 +203,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="stopButton">
+       <widget class="QPushButton" name="pauseButton">
         <property name="text">
          <string>Pause</string>
         </property>
@@ -212,7 +223,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="restButton">
+       <widget class="QPushButton" name="resetButton">
         <property name="text">
          <string>Reset</string>
         </property>

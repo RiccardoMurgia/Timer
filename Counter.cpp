@@ -47,11 +47,11 @@ string &Counter::getDateFormat() {
     return currentDate->getFormat();
 }
 
-void Counter::setTimeFormat(const string& format) {
+void Counter::setTimeFormat(const string &format) {
     currentTime->setFormat(format);
 }
 
-void Counter::setDateFormat(const string& format) {
+void Counter::setDateFormat(const string &format) {
     currentDate->setFormat(format);
 }
 
