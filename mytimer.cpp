@@ -65,9 +65,7 @@ void MyTimer::on_startButton_clicked() {
     } else {
         QMessageBox::StandardButton reply = QMessageBox::warning(this, "Waring",
                                                                  "It is necessary to set the timer before starting it");
-        if (reply == QMessageBox::Yes) {
-            QApplication::quit();
-        }
+
     }
 }
 
@@ -77,12 +75,13 @@ void MyTimer::on_pauseButton_clicked() {
 }
 
 void MyTimer::on_resetButton_clicked() {
+    if(pause){
     ui->hours->display(0);
     ui->minutes->display(0);
     ui->seconds->display(0);
     start = false;
     setFlag = false;
-}
+}}
 
 
 
