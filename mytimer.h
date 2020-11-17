@@ -32,7 +32,7 @@ public slots:
 private:
     Ui::MyTimer *ui;
     Counter *counter;
-    Time *time{};
+    Time *time;
     bool start, pause, setFlag;
 
 
