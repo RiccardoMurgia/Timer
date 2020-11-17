@@ -9,13 +9,14 @@
 #include "Time.h"
 #include "Date.h"
 #include "Observer.h"
+#include "Subject.h"
 #include<ctime>
 #include<cstdlib>
 #include <QtCore/QObject>
 #include <QtCore/QTimer>
 
 
-class Counter : public QObject {
+class Counter : public QObject, public Subject {
 Q_OBJECT
 
 
@@ -38,11 +39,11 @@ public:
 
     virtual ~Counter();
 
-    void attach(Observer *o);
+    virtual void attach(Observer *o);
 
-    void detach(Observer *o);
+     virtual void detach(Observer *o);
 
-    void notify();
+     virtual void notify() ;
 
 public slots:
 

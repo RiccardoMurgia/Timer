@@ -10,6 +10,6 @@ find_package(Qt5Widgets REQUIRED)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Project main.cpp Time.cpp Time.h Date.cpp Date.h Counter.cpp Counter.h Observer.h mainwindow.cpp mainwindow.h mainwindow.ui mytimer.cpp mytimer.h mytimer.ui)
+add_executable(Project main.cpp Time.cpp Time.h Date.cpp Date.h Counter.cpp Counter.h Observer.h mainwindow.cpp mainwindow.h mainwindow.ui mytimer.cpp mytimer.h mytimer.ui Subject.h)
 
 target_link_libraries(Project Qt5::Widgets)
