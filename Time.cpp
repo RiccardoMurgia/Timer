@@ -8,15 +8,18 @@ Time::Time(int hours, int minutes, int seconds) : hours(hours), minutes(minutes)
                                                   format("12h Form") {}
 
 void Time::setHours(int hours) {
-    Time::hours = hours;
+    if (hours >= 0 && hours <= 23)
+        Time::hours = hours;
 }
 
 void Time::setMinutes(int minutes) {
-    Time::minutes = minutes;
+    if (minutes >= 0 && minutes <= 59)
+        Time::minutes = minutes;
 }
 
 void Time::setSeconds(int seconds) {
-    Time::seconds = seconds;
+    if (seconds >= 0 && seconds <= 59)
+        Time::seconds = seconds;
 }
 
 void Time::setFormat(const string &format) {
@@ -60,7 +63,7 @@ string Time::getFullString() const {
         tmpHours = (hours > 12 ? hours - 12 : hours);
         if (tmpHours < 10)
             h = "0" + std::to_string(tmpHours);
-        fullString = h + " : " + min+ " : " + sec+ " " + amOrPm;
+        fullString = h + " : " + min + " : " + sec + " " + amOrPm;
     } else {
         fullString = h + " : " + min + " : " + sec;
     }

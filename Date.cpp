@@ -9,19 +9,23 @@ Date::Date(int day, int month, int year, int dayOfWeek, bool leapYear) : day(day
                                                                          format("Extended Format") {}
 
 void Date::setDay(int day) {
-    Date::day = day;
+    if (day > 0 && day <= 31)
+        Date::day = day;
 }
 
 void Date::setMonth(int month) {
-    Date::month = month;
+    if (month > 0 && month <= 12)
+        Date::month = month;
 }
 
 void Date::setYear(int year) {
-    Date::year = year;
+    if (year >= 0)
+        Date::year = year;
 }
 
 void Date::setDayOfWeek(int dayOfWeek) {
-    Date::dayOfWeek = dayOfWeek;
+    if (dayOfWeek >= 0 && dayOfWeek <= 6)
+        Date::dayOfWeek = dayOfWeek;
 }
 
 void Date::setFormat(const string &format) {
