@@ -17,18 +17,18 @@ TEST(TimeTests, setTimeTest) {
 }
 
 TEST(TimeTests, setFormatTest) {
-    Time time(0, 0, 0 );
+    Time time(0, 0, 0);
     ASSERT_EQ("12h Form", time.getFormat());
 }
 
 TEST(TimeTests, getFullStringTest) {
     Time time(10, 15, 25);
-    ASSERT_EQ("10 : 15 : 25 AM", time.getFullString() );
+    ASSERT_EQ("10 : 15 : 25 AM", time.getFullString());
     time.setFormat("24h Form");
-    ASSERT_EQ("10 : 15 : 25", time.getFullString() );
+    ASSERT_EQ("10 : 15 : 25", time.getFullString());
 }
 
-TEST(TimeTests, insertAWrongValueTest){
+TEST(TimeTests, insertAWrongValueTest) {
     Time time(0, 0, 0);
     time.setHours(25);
     time.setMinutes(-12);
