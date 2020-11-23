@@ -84,6 +84,7 @@ void Counter::increase() {
 
                 if (isNotLastDayOfTheMonth()) {
                     currentDate->setDay(currentDate->getDay() + 1);
+                    currentDate->setDayOfWeek((currentDate->getDayOfWeek() + 1) % 7);
                 } else {
                     currentDate->setDay(1);
                     if (currentDate->getMonth() < 12)
@@ -91,6 +92,10 @@ void Counter::increase() {
                     else {
                         currentDate->setMonth(1);
                         currentDate->setYear(currentDate->getYear() + 1);
+                        if(currentDate->checkIfIsALeapYear(currentDate->getYear()))
+                            currentDate->setLeapWeek(true);
+                        else
+                            currentDate->setLeapWeek(false);
 
                     }
                 }

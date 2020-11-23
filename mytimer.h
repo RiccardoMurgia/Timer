@@ -15,7 +15,7 @@ public:
 
     explicit MyTimer(QWidget *parent = nullptr);
 
-    ~MyTimer();
+    virtual ~MyTimer();
 
     void update() override;
 
@@ -32,7 +32,6 @@ public slots:
 private:
     Ui::MyTimer *ui;
     Counter *counter;
-    Time *time;
     bool start, pause, setFlag;
 
 

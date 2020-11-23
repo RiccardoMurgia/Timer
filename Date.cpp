@@ -4,29 +4,44 @@
 
 #include "Date.h"
 
-Date::Date(int day, int month, int year, int dayOfWeek, bool leapYear) : day(day), month(month), year(year),
-                                                                         dayOfWeek(dayOfWeek), leapYear(leapYear),
-                                                                         format("Extended Format") {}
+Date::Date(int day, int month, int year, int dayOfWeek, bool leapYear, string format) : day(day), month(month),
+                                                                                        year(year),
+                                                                                        dayOfWeek(dayOfWeek),
+                                                                                        leapYear(leapYear),
+                                                                                        format(format) {}
 
 void Date::setDay(int day) {
     if (day > 0 && day <= 31)
         Date::day = day;
+    else
+        Date::day = 1;
 }
 
 void Date::setMonth(int month) {
     if (month > 0 && month <= 12)
         Date::month = month;
+    else
+        Date::month = 1;
 }
 
 void Date::setYear(int year) {
     if (year >= 0)
         Date::year = year;
+    else
+        Date::year = 0;
 }
 
 void Date::setDayOfWeek(int dayOfWeek) {
     if (dayOfWeek >= 0 && dayOfWeek <= 6)
         Date::dayOfWeek = dayOfWeek;
+    else
+        Date::dayOfWeek = 0;
 }
+
+void Date::setLeapWeek(bool isLeapWeek) {
+    leapYear = isLeapWeek;
+}
+
 
 void Date::setFormat(const string &format) {
     Date::format = format;
@@ -49,7 +64,26 @@ string &Date::getFormat() {
 }
 
 bool Date::isLeapYear() {
-    return false;
+    return leapYear;
+}
+
+bool Date::checkIfIsALeapYear(int year) {
+    bool isLeapYear = false;
+    if (year % 4 == 0) {
+        if (year % 100 == 0) {
+            if (year % 400 == 0) {
+                isLeapYear = true;
+            } else {
+                isLeapYear = false;
+            }
+        } else {
+            isLeapYear = true;
+        }
+    } else {
+        isLeapYear = false;
+    }
+    return isLeapYear;
+
 }
 
 string Date::getFullString() const {
@@ -67,10 +101,10 @@ string Date::getFullString() const {
     y = std::to_string(year);
 
     if (format == "DD-MM-YYYY") {
-        fullString = d + " - " + m + "- " + y;
+        fullString = d + " - " + m + " - " + y;
         return fullString;
     } else if (format == "DD-MM-YY") {
-        fullString = d + " - " + m + "- " + y.substr(2, 3);
+        fullString = d + " - " + m + " - " + y.substr(2, 3);
         return fullString;
     } else {
         string tmp;
@@ -82,6 +116,9 @@ string Date::getFullString() const {
 
 }
 
+int Date::getDayOfWeek() const {
+    return dayOfWeek;
+}
 
 
 

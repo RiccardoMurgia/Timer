@@ -12,7 +12,7 @@ using namespace std;
 class Date {
 
 public:
-    Date(int day, int month, int year, int dayOfWeek, bool leapYear);
+    Date(int day, int month, int year, int dayOfWeek, bool leapYear, string format = "Extended Format");
 
     void setDay(int day);
 
@@ -21,6 +21,8 @@ public:
     void setYear(int year);
 
     void setDayOfWeek(int dayOfWeek);
+
+    void setLeapWeek(bool isLeapWeek);
 
     void setFormat(const string &format);
 
@@ -32,9 +34,13 @@ public:
 
     int getYear();
 
+    int getDayOfWeek() const;
+
     bool isLeapYear();
 
     string &getFormat();
+
+    bool checkIfIsALeapYear(int year);
 
 private:
     int day, month, year, dayOfWeek;

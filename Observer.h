@@ -4,10 +4,12 @@
 
 #ifndef PROJECT_OBSERVER_H
 #define PROJECT_OBSERVER_H
-class Observer{
+
+class Observer {
 public:
     virtual void update() = 0;
 
-    virtual ~Observer(){ };
+    virtual ~Observer() = default;
 };
+
 #endif //PROJECT_OBSERVER_H

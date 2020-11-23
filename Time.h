@@ -13,7 +13,7 @@ class Time {
 
 public:
 
-    Time(int hours, int minutes, int seconds);
+    Time(int hours, int minutes, int seconds, string formar = "12h Form");
 
     void setHours(int hours);
 

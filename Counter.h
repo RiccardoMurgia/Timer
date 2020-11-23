@@ -19,9 +19,7 @@
 class Counter : public QObject, public Subject {
 Q_OBJECT
 
-
 public:
-
 
     string &getTimeFormat();
 
@@ -39,11 +37,11 @@ public:
 
     virtual ~Counter();
 
-    virtual void attach(Observer *o);
+    void attach(Observer *o) override;
 
-     virtual void detach(Observer *o);
+    void detach(Observer *o) override;
 
-     virtual void notify() ;
+    void notify() override;
 
 public slots:
 
@@ -55,7 +53,6 @@ private:
     QTimer *qTimer;
     Time *currentTime;
     Date *currentDate;
-    bool active;
 
     Counter();
 

@@ -4,22 +4,28 @@
 
 #include "Time.h"
 
-Time::Time(int hours, int minutes, int seconds) : hours(hours), minutes(minutes), seconds(seconds),
-                                                  format("12h Form") {}
+Time::Time(int hours, int minutes, int seconds, string format) : hours(hours), minutes(minutes), seconds(seconds),
+                                                                 format(format) {}
 
 void Time::setHours(int hours) {
     if (hours >= 0 && hours <= 23)
         Time::hours = hours;
+    else
+        hours = 0;
 }
 
 void Time::setMinutes(int minutes) {
     if (minutes >= 0 && minutes <= 59)
         Time::minutes = minutes;
+    else
+        minutes = 0;
 }
 
 void Time::setSeconds(int seconds) {
     if (seconds >= 0 && seconds <= 59)
         Time::seconds = seconds;
+    else
+        seconds = 0;
 }
 
 void Time::setFormat(const string &format) {
@@ -69,6 +75,7 @@ string Time::getFullString() const {
     }
     return fullString;
 }
+
 
 
 
