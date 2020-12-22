@@ -5,15 +5,18 @@
 #ifndef PROJECT_TIME_H
 #define PROJECT_TIME_H
 
+#include <stdexcept>
 #include "string"
 
 using namespace std;
+enum TimeFormats{Format12h, Format24h};
+
 
 class Time {
 
 public:
 
-    Time(int hours, int minutes, int seconds, string formar = "12h Form");
+    Time(int hours, int minutes, int seconds, TimeFormats format =  Format12h);
 
     void setHours(int hours);
 
@@ -21,7 +24,7 @@ public:
 
     void setSeconds(int seconds);
 
-    void setFormat(const string &format);
+    void setFormat(const TimeFormats &format);
 
     int getHours() const;
 
@@ -29,14 +32,16 @@ public:
 
     int getSeconds() const;
 
-    string &getFormat();
-
     string getFullString() const;
 
+    TimeFormats &getFormat();
 
 private:
     int hours, minutes, seconds;
-    string format;
+    TimeFormats format;
+
+
+
 };
 
 

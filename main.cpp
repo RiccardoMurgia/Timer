@@ -1,7 +1,4 @@
-#include <iostream>
 #include <QApplication>
-#include <QDebug>
-#include <QtWidgets/QLabel>
 #include "Counter.h"
 #include "mainwindow.h"
 

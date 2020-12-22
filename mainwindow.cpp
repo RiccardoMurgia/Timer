@@ -1,6 +1,5 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "iostream"
+
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -17,7 +16,6 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-
 void MainWindow::on_openTimer_clicked() {
     myTimer = new MyTimer();
     myTimer->show();
@@ -32,10 +30,19 @@ void MainWindow::update() {
 
 void MainWindow::on_selectTimeFormat_currentTextChanged(const QString &arg1) {
     string timeFormat = ui->selectTimeFormat->currentText().toStdString();
-    counter->setTimeFormat(timeFormat);
+    if (timeFormat == "12h Form")
+        counter->setTimeFormat(Format12h);
+    else
+        counter->setTimeFormat(Format24h);
 }
 
 void MainWindow::on_selectDateFormat_currentTextChanged(const QString &arg1) {
     string dateFormat = ui->selectDateFormat->currentText().toStdString();
-    counter->setDateFormat(dateFormat);
+    if (dateFormat == "Extended Format")
+        counter->setDateFormat(ExtendedFormat);
+    else if (dateFormat == "DD-MM-YYYY")
+        counter->setDateFormat(NormalFormat);
+    else
+        counter->setDateFormat(ReduceFormat);
+
 }

@@ -1,11 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "iostream"
 #include <QMainWindow>
+#include "ui_mainwindow.h"
 #include <mytimer.h>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QLabel>
+
 #include "Counter.h"
+#include "Time.h"
+#include "Date.h"
 
 
 QT_BEGIN_NAMESPACE

@@ -2,7 +2,6 @@
 // Created by riccardo on 11/11/20.
 //
 
-#include <QtCore/QTime>
 #include "Counter.h"
 
 Counter::Counter() {
@@ -31,6 +30,18 @@ Counter *Counter::getInstance() {
     return instance;
 }
 
+int Counter::getSeconds() {
+    return currentTime->getSeconds();
+}
+
+int Counter::getMinutes() {
+    return  currentTime->getMinutes();
+}
+
+int Counter::getHours() {
+    return  currentTime->getHours();
+}
+
 string Counter::getStringTime() {
     return currentTime->getFullString();
 }
@@ -39,19 +50,11 @@ string Counter::getStringDate() {
     return currentDate->getFullString();
 }
 
-string &Counter::getTimeFormat() {
-    return currentTime->getFormat();
-}
-
-string &Counter::getDateFormat() {
-    return currentDate->getFormat();
-}
-
-void Counter::setTimeFormat(const string &format) {
+void Counter::setTimeFormat(const TimeFormats &format) {
     currentTime->setFormat(format);
 }
 
-void Counter::setDateFormat(const string &format) {
+void Counter::setDateFormat(const DataFormat &format) {
     currentDate->setFormat(format);
 }
 
@@ -69,39 +72,43 @@ void Counter::notify() {
 }
 
 void Counter::increase() {
-    if (currentTime->getSeconds() < 59)
-        currentTime->setSeconds(currentTime->getSeconds() + 1);
-    else {
-        currentTime->setSeconds(0);
-        if (currentTime->getMinutes() < 59)
-            currentTime->setMinutes(currentTime->getMinutes() + 1);
+    try {
+        if (currentTime->getSeconds() < 59)
+            currentTime->setSeconds(currentTime->getSeconds() + 1);
         else {
-            currentTime->setMinutes(0);
-            if (currentTime->getHours() < 23)
-                currentTime->setHours(currentTime->getHours() + 1);
+            currentTime->setSeconds(0);
+            if (currentTime->getMinutes() < 59)
+                currentTime->setMinutes(currentTime->getMinutes() + 1);
             else {
-                currentTime->setHours(0);
+                currentTime->setMinutes(0);
+                if (currentTime->getHours() < 23)
+                    currentTime->setHours(currentTime->getHours() + 1);
+                else {
+                    currentTime->setHours(0);
 
-                if (isNotLastDayOfTheMonth()) {
-                    currentDate->setDay(currentDate->getDay() + 1);
-                    currentDate->setDayOfWeek((currentDate->getDayOfWeek() + 1) % 7);
-                } else {
-                    currentDate->setDay(1);
-                    if (currentDate->getMonth() < 12)
-                        currentDate->setMonth(currentDate->getMonth() + 1);
-                    else {
-                        currentDate->setMonth(1);
-                        currentDate->setYear(currentDate->getYear() + 1);
-                        if(currentDate->checkIfIsALeapYear(currentDate->getYear()))
-                            currentDate->setLeapWeek(true);
-                        else
-                            currentDate->setLeapWeek(false);
+                    if (isNotLastDayOfTheMonth()) {
+                        currentDate->setDay(currentDate->getDay() + 1);
+                        currentDate->setDayOfWeek((currentDate->getDayOfWeek() + 1) % 7);
+                    } else {
+                        currentDate->setDay(1);
+                        if (currentDate->getMonth() < 12)
+                            currentDate->setMonth(currentDate->getMonth() + 1);
+                        else {
+                            currentDate->setMonth(1);
+                            currentDate->setYear(currentDate->getYear() + 1);
+                            if (currentDate->checkIfIsALeapYear(currentDate->getYear()))
+                                currentDate->setLeapWeek(true);
+                            else
+                                currentDate->setLeapWeek(false);
 
+                        }
                     }
                 }
-            }
 
+            }
         }
+    } catch (exception& e) {
+        std::cerr << e.what()<<endl;
     }
     notify();
 }
@@ -118,11 +125,4 @@ bool Counter::isNotLastDayOfTheMonth() {
         return false;
     }
 }
-
-
-
-
-
-
-
 

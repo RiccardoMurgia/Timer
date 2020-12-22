@@ -2,35 +2,36 @@
 // Created by riccardo on 11/11/20.
 //
 
+
 #include "Time.h"
 
-Time::Time(int hours, int minutes, int seconds, string format) : hours(hours), minutes(minutes), seconds(seconds),
-                                                                 format(format) {}
+Time::Time(int hours, int minutes, int seconds, TimeFormats format) : hours(hours), minutes(minutes), seconds(seconds), format(format) {}
 
 void Time::setHours(int hours) {
     if (hours >= 0 && hours <= 23)
         Time::hours = hours;
     else
-        hours = 0;
+        throw  std::invalid_argument("Invalid hour");
 }
 
 void Time::setMinutes(int minutes) {
     if (minutes >= 0 && minutes <= 59)
         Time::minutes = minutes;
     else
-        minutes = 0;
+        throw  std::invalid_argument("Invalid minutes");
 }
 
 void Time::setSeconds(int seconds) {
     if (seconds >= 0 && seconds <= 59)
         Time::seconds = seconds;
     else
-        seconds = 0;
+        throw  std::invalid_argument("invalid seconds");
 }
 
-void Time::setFormat(const string &format) {
+void Time::setFormat(const  TimeFormats &format) {
     Time::format = format;
 }
+
 
 int Time::getHours() const {
     return hours;
@@ -44,7 +45,7 @@ int Time::getSeconds() const {
     return seconds;
 }
 
-string &Time::getFormat() {
+TimeFormats &Time::getFormat() {
     return format;
 }
 
@@ -59,7 +60,7 @@ string Time::getFullString() const {
         min = '0' + std::to_string(minutes);
     if (hours < 10)
         h = '0' + std::to_string(hours);
-    if (format == "12h Form") {
+    if (format == 0) {
         string amOrPm;
         int tmpHours;
         if (hours >= 12)
@@ -75,6 +76,11 @@ string Time::getFullString() const {
     }
     return fullString;
 }
+
+
+
+
+
 
 
 

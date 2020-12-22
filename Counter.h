@@ -10,9 +10,10 @@
 #include "Date.h"
 #include "Observer.h"
 #include "Subject.h"
-#include<ctime>
+#include <iostream>
 #include<cstdlib>
 #include <QtCore/QObject>
+#include <QtCore/QTime>
 #include <QtCore/QTimer>
 
 
@@ -21,13 +22,15 @@ Q_OBJECT
 
 public:
 
-    string &getTimeFormat();
+    void setTimeFormat(const TimeFormats &format);
 
-    string &getDateFormat();
+    void setDateFormat(const DataFormat &format);
 
-    void setTimeFormat(const string &basicString);
+    int getSeconds();
 
-    void setDateFormat(const string &format);
+    int getMinutes();
+
+    int getHours();
 
     string getStringDate();
 

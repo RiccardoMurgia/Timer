@@ -6,13 +6,16 @@
 #define PROJECT_DATE_H
 
 #include "string"
+#include <stdexcept>
+
+enum DataFormat{ExtendedFormat, NormalFormat ,ReduceFormat };
 
 using namespace std;
 
 class Date {
 
 public:
-    Date(int day, int month, int year, int dayOfWeek, bool leapYear, string format = "Extended Format");
+    Date(int day, int month, int year, int dayOfWeek, bool leapYear, DataFormat format = ExtendedFormat);
 
     void setDay(int day);
 
@@ -24,7 +27,7 @@ public:
 
     void setLeapWeek(bool isLeapWeek);
 
-    void setFormat(const string &format);
+    void setFormat(const DataFormat &format);
 
     string getFullString() const;
 
@@ -38,13 +41,13 @@ public:
 
     bool isLeapYear();
 
-    string &getFormat();
+    DataFormat &getFormat();
 
     bool checkIfIsALeapYear(int year);
 
 private:
     int day, month, year, dayOfWeek;
-    string format;
+    DataFormat format;
     bool leapYear;
 
 };

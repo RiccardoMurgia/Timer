@@ -4,7 +4,7 @@
 
 #include "Date.h"
 
-Date::Date(int day, int month, int year, int dayOfWeek, bool leapYear, string format) : day(day), month(month),
+Date::Date(int day, int month, int year, int dayOfWeek, bool leapYear, DataFormat format) : day(day), month(month),
                                                                                         year(year),
                                                                                         dayOfWeek(dayOfWeek),
                                                                                         leapYear(leapYear),
@@ -14,28 +14,28 @@ void Date::setDay(int day) {
     if (day > 0 && day <= 31)
         Date::day = day;
     else
-        Date::day = 1;
+        throw  std::invalid_argument("Invalid day");
 }
 
 void Date::setMonth(int month) {
     if (month > 0 && month <= 12)
         Date::month = month;
     else
-        Date::month = 1;
+        throw  std::invalid_argument("Invalid month");
 }
 
 void Date::setYear(int year) {
     if (year >= 0)
         Date::year = year;
     else
-        Date::year = 0;
+        throw  std::invalid_argument("Invalid year");
 }
 
 void Date::setDayOfWeek(int dayOfWeek) {
     if (dayOfWeek >= 0 && dayOfWeek <= 6)
         Date::dayOfWeek = dayOfWeek;
     else
-        Date::dayOfWeek = 0;
+        throw  std::invalid_argument("Invalid dayOfWeek");
 }
 
 void Date::setLeapWeek(bool isLeapWeek) {
@@ -43,7 +43,7 @@ void Date::setLeapWeek(bool isLeapWeek) {
 }
 
 
-void Date::setFormat(const string &format) {
+void Date::setFormat(const DataFormat &format) {
     Date::format = format;
 }
 
@@ -59,7 +59,7 @@ int Date::getYear() {
     return year;
 }
 
-string &Date::getFormat() {
+DataFormat &Date::getFormat() {
     return format;
 }
 
@@ -100,10 +100,10 @@ string Date::getFullString() const {
     }
     y = std::to_string(year);
 
-    if (format == "DD-MM-YYYY") {
+    if (format == 1) {
         fullString = d + " - " + m + " - " + y;
         return fullString;
-    } else if (format == "DD-MM-YY") {
+    } else if (format == 2) {
         fullString = d + " - " + m + " - " + y.substr(2, 3);
         return fullString;
     } else {
