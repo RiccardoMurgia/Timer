@@ -30,23 +30,23 @@ Counter *Counter::getInstance() {
     return instance;
 }
 
-int Counter::getSeconds() {
+const int Counter::getSeconds() const {
     return currentTime->getSeconds();
 }
 
-int Counter::getMinutes() {
+const int Counter::getMinutes() const{
     return  currentTime->getMinutes();
 }
 
-int Counter::getHours() {
+const int Counter::getHours() const {
     return  currentTime->getHours();
 }
 
-string Counter::getStringTime() {
+const string Counter::getStringTime() const {
     return currentTime->getFullString();
 }
 
-string Counter::getStringDate() {
+const string Counter::getStringDate() const {
     return currentDate->getFullString();
 }
 

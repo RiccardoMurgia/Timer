@@ -26,15 +26,15 @@ public:
 
     void setDateFormat(const DataFormat &format);
 
-    int getSeconds();
+    const int getSeconds() const;
 
-    int getMinutes();
+    const int getMinutes() const;
 
-    int getHours();
+    const int getHours() const;
 
-    string getStringDate();
+    const string getStringDate() const;
 
-    string getStringTime();
+    const string getStringTime() const;
 
     static Counter *getInstance();
 
