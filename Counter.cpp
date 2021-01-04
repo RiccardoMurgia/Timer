@@ -30,23 +30,23 @@ Counter *Counter::getInstance() {
     return instance;
 }
 
-const int Counter::getSeconds() const {
+int Counter::getSeconds() const {
     return currentTime->getSeconds();
 }
 
-const int Counter::getMinutes() const{
-    return  currentTime->getMinutes();
+int Counter::getMinutes() const {
+    return currentTime->getMinutes();
 }
 
-const int Counter::getHours() const {
-    return  currentTime->getHours();
+int Counter::getHours() const {
+    return currentTime->getHours();
 }
 
-const string Counter::getStringTime() const {
+string Counter::getStringTime() const {
     return currentTime->getFullString();
 }
 
-const string Counter::getStringDate() const {
+string Counter::getStringDate() const {
     return currentDate->getFullString();
 }
 
@@ -107,8 +107,8 @@ void Counter::increase() {
 
             }
         }
-    } catch (exception& e) {
-        std::cerr << e.what()<<endl;
+    } catch (exception &e) {
+        std::cerr << e.what() << endl;
     }
     notify();
 }
