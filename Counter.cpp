@@ -107,7 +107,7 @@ void Counter::increase() {
 
             }
         }
-    } catch (exception &e) {
+    } catch ( const exception &e) {
         std::cerr << e.what() << endl;
     }
     notify();
